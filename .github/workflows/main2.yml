@@ -14,7 +14,12 @@ jobs:
         run: pip install -r requirements.txt
       - name: run test and enforce coverage
         run: |
-          pytest --cov=calc --cov-report=term
+           pytest --cov=calc --cov-report=term --cov-report=html --cov-fail-under=80
+            - name: upload code coverage report
+              uses: actions/upload-artifact@v4
+              with:
+                name: html-code-coverage-report
+                path: htmlpage/
 
   cd-job:
     runs-on: ubuntu-latest
