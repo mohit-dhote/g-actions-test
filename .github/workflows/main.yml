@@ -1,1 +1,20 @@
 
+name: run python prog with dependencies
+
+on:
+    push:
+        branches:
+          - main
+
+jobs:
+    extract-data:
+        runs-on: ubuntu-latest
+        steps:
+            - name: checkout code
+              uses: actions/checkout@v3
+            - name: use python 3.10 version
+              uses: actions/setup-python@V4 
+              with:
+                python-version: '3.10'
+            - name: run python program
+              run: python extract_data.py
