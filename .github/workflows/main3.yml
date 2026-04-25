@@ -1,0 +1,16 @@
+name: read secrets
+on:
+    push:
+        branches:
+            - main
+jobs:
+    ci-job:
+        runs-on: ubuntu-latest
+        steps:
+            - name: checkout code
+              uses: actions/checkout@v2
+            - name: Run Python code with secret
+              env:
+                MY_TOKEN: ${{secrets.MY_SECRET_TOKEN}}
+              run: python read.py
+       
